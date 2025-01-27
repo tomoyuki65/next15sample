@@ -1,13 +1,13 @@
 "use client";
 
 interface Props {
-    text: string;
-    onClick: () => void;
+  text: string;
+  onClick: () => void;
 }
 
 export default function Button({
-    text,
-    onClick,
+  text,
+  onClick,
 }: Props) {
   const style = `
     w-fit
@@ -15,7 +15,7 @@ export default function Button({
     rounded-md
     px-1
     py-0.5
-  `
+  `;
 
   return (
     <>
