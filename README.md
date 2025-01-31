@@ -2,7 +2,7 @@
 Next.jsのv15のサンプルコードです。
   
 ## 使用技術
-* **Node.js:** >= v22 (推奨)
+* **Node.js:** 22.13.1
 * **Next.js:** 15.1.6
 * **React:** ^19.0.0
 * **TypeScript:** ^5.0.0
@@ -35,4 +35,15 @@ npm run storybook
 **1. dprint & ESLintのチェック:**
 ```bash
 npm run fix
+```
+
+## Dockerfileのビルド用コマンド
+**1. ビルド:**
+```bash
+docker build --no-cache --build-arg BUILD_ENV=prod -f ./docker/Dockerfile -t next15sample:latest .
+```
+  
+**2. コンテナ起動:**
+```bash
+docker run -p 80:3000 next15sample:latest
 ```

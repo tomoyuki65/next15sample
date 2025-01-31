@@ -20,6 +20,7 @@ export default function Mock() {
   return (
     <>
       <h1>Mock Component !!</h1>
+      <p>ENV: {process.env.ENV}</p>
       <p>width: {windowSize.width}</p>
       <p>height: {windowSize.height}</p>
       <p>isLoding: {String(isLoding)}</p>
