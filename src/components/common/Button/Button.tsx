@@ -3,15 +3,17 @@
 interface Props {
   text: string;
   onClick: () => void;
+  disabled: boolean;
 }
 
 export default function Button({
   text,
   onClick,
+  disabled,
 }: Props) {
   const style = `
     w-fit
-    bg-green-700
+    ${!disabled ? "bg-green-700" : "bg-gray-300"}
     rounded-md
     px-1
     py-0.5
@@ -20,7 +22,7 @@ export default function Button({
   return (
     <>
       <div className={style}>
-        <button onClick={onClick}>
+        <button onClick={!disabled ? onClick : () => {}}>
           {text}
         </button>
       </div>

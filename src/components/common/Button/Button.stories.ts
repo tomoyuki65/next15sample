@@ -30,6 +30,7 @@ export const Primary: Story = {
   args: {
     text: "ボタン",
     onClick: () => {},
+    disabled: false,
   },
 };
 

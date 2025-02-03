@@ -17,10 +17,20 @@ export default function TextInput({
   control,
   errors,
 }: Props) {
+  const styleLabelText = `
+    text-black
+    font-bold
+  `;
+
+  const styleInput = `
+    w-full
+    border
+  `;
+
   return (
     <>
       <div>
-        <label htmlFor="email">
+        <label className={styleLabelText}>
           {label}
         </label>
         <Controller
@@ -29,7 +39,7 @@ export default function TextInput({
           defaultValue={defaultValue}
           render={({ field }) => (
             <div className="text-black">
-              <input {...field} type={name} name={name} id={name} />
+              <input className={styleInput} {...field} type={name} name={name} id={name} />
               {errors[field.name]?.message && (
                 <p className="text-red-500">
                   {String(errors[field.name]?.message)}

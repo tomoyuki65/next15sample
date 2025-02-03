@@ -4,7 +4,7 @@ import Button from "@/components/common/Button/Button";
 import TextInput from "@/components/common/TextInput/TextInput";
 // import { useStateContext } from "@/contexts/common/StateContext";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldErrors, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
 
@@ -24,6 +24,7 @@ export default function MockForm() {
   // フォーム
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [disabled, setDisabled] = useState(false);
   // const [isHoverd, setIsHoverd] = useState(false);
 
   // バリデーションの設定
@@ -42,12 +43,14 @@ export default function MockForm() {
     handleSubmit,
     formState: { errors },
     getValues,
+    watch,
   } = useForm(formOptions);
 
   // バリデーションチェックで正常時
   const onSubmit: SubmitHandler<FormData> = async (
     data: FormData,
   ) => {
+    setDisabled(false);
     console.log("バリデーションチェックOK！", data);
   };
 
@@ -55,6 +58,7 @@ export default function MockForm() {
   const onError: SubmitErrorHandler<FormData> = async (
     errors: FieldErrors<FormData>,
   ) => {
+    setDisabled(true);
     console.log("バリデーションチェックでエラー");
     console.log(errors);
   };
@@ -65,6 +69,18 @@ export default function MockForm() {
     setPassword(values.password);
     handleSubmit(onSubmit, onError)();
   };
+
+  // フォームの状態値
+  const watchedValues = watch();
+
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, [watchedValues]);
 
   return (
     <>
@@ -89,7 +105,7 @@ export default function MockForm() {
       </div>
       <br />
       <div>
-        <Button text={"Submitボタン"} onClick={submit} />
+        <Button text={"Submit"} onClick={submit} disabled={disabled} />
       </div>
     </>
   );
