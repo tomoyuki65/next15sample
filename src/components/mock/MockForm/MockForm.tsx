@@ -85,26 +85,28 @@ export default function MockForm() {
   return (
     <>
       <h1>Mock Form Component !!</h1>
-      <div>
-        <TextInput
-          label={"Email"}
-          name={"email"}
-          defaultValue={email}
-          control={control}
-          errors={errors}
-        />
-      </div>
-      <div>
-        <TextInput
-          label={"Password"}
-          name={"password"}
-          defaultValue={password}
-          control={control}
-          errors={errors}
-        />
+      <div className="w-[300px] bg-white rounded p-1 m-1">
+        <div>
+          <TextInput
+            label={"Email"}
+            name={"email"}
+            defaultValue={email}
+            control={control}
+            errors={errors}
+          />
+        </div>
+        <div>
+          <TextInput
+            label={"Password"}
+            name={"password"}
+            defaultValue={password}
+            control={control}
+            errors={errors}
+          />
+        </div>
       </div>
       <br />
-      <div>
+      <div className="p-1 m-1">
         <Button text={"Submit"} onClick={submit} disabled={disabled} />
       </div>
     </>
