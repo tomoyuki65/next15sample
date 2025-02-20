@@ -27,7 +27,7 @@ export default function Mock() {
       <p>isLogin: {String(isLogin)}</p>
       <p>token: {token}</p>
       <br />
-      <Button text={"ボタン"} onClick={onClick} />
+      <Button text={"ボタン"} onClick={onClick} disabled={false}/>
     </>
   );
 }

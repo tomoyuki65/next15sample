@@ -34,10 +34,10 @@ RUN addgroup --system --gid 1001 appuser && \
     adduser --system --uid 1001 appuser
 
 # ビルドステージからファイルをコピー
-COPY --from=builder --chown=app:app /build/next.config.ts ./
-COPY --from=builder --chown=app:app /build/public ./public
-COPY --from=builder --chown=app:app /build/.next/static ./.next/static
-COPY --from=builder --chown=app:app /build/.next/standalone ./
+COPY --from=builder --chown=appuser:appuser /build/next.config.ts ./
+COPY --from=builder --chown=appuser:appuser /build/public ./public
+COPY --from=builder --chown=appuser:appuser /build/.next/static ./.next/static
+COPY --from=builder --chown=appuser:appuser /build/.next/standalone ./
 
 # コンテナのポート番号
 EXPOSE 3000
